@@ -425,11 +425,11 @@ namespace SGUI
 		}
 		virtual bool mouseDragEvent(const Point& p, const Point& rel, MouseButStatus buttons, Keymod modifiers) override
 		{
-			if (TextBox::mouseDragEvent(p, rel, button, modifiers)) 
+			if (TextBox::mouseDragEvent(p, rel, buttons, modifiers)) 
 			{
 				return true;
 			}
-			if (mSpinnable && !focused() && button == 2 /* 1 << GLFW_MOUSE_BUTTON_2 */ && mMouseDownPos.x() != -1) 
+			if (mSpinnable && !focused() /* && button == 2 1 << GLFW_MOUSE_BUTTON_2 */ && mMouseDownPos.x() != -1) 
 			{
 				int valueDelta = static_cast<int>((p.x - mMouseDownPos.x) / float(10));
 				setValue(mMouseDownValue + valueDelta * mValueIncrement);

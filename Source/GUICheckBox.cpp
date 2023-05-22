@@ -143,7 +143,8 @@ namespace SGUI
 		else
 			mImageNormal.Render(renderer, offset + mTickBoxPos);
 
-		mImageText.Render(renderer, offset + mTextPos);
+        Point offset2=offset + mTextPos;
+		mImageText.Render(renderer, offset2);
 
 		if (mChecked)
 			mCheckMark.Render(renderer, offset + mCheckPos);

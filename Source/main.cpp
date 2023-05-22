@@ -107,7 +107,8 @@ public:
 
 	void Render(Renderer& renderer)	override
 	{
-		mGUI.Render(renderer, Point{ 0,0 });
+    auto p = Point{ 0,0 };
+		mGUI.Render(renderer,p);
 	}
 
 	void CleanUp() override {}
@@ -151,7 +152,7 @@ bool CreateSDLWindow(Window& window, WindowCreationParams& createParam)
 }
 
 
-int main(int argc, char *argv[])
+int wmain() // (int argc, char *argv[])
 {
 	InitSDL();
 
@@ -173,7 +174,8 @@ int main(int argc, char *argv[])
 			/// If we have valid window & renderer then render the frame
 			if (window.CanRender())
 			{
-				mGUI.Render(window.GetRenderer(), Point{ 0,0 });
+            auto p = Point{ 0,0 };
+				mGUI.Render(window.GetRenderer(), p);
 				window.Present();
 			}
 		};

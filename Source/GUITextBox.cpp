@@ -440,7 +440,8 @@ namespace SGUI
 			renderer.FillRect(hilite_box, hiliteColor);
 		}
 
-		mImageText.Render(renderer, newOffset + mTextOffset);
+        Point offset2=newOffset + mTextOffset;
+		mImageText.Render(renderer, offset2);
 
 		// draw cursor
 		if (focused() && !mCommitted)
@@ -631,8 +632,10 @@ namespace SGUI
 		else
 			insertPosIt = mValue.end();
 
-		std::string& pasteStr = GetClipboardText();
+            {
+		std::string pasteStr = GetClipboardText();
 		mValue.insert(insertPosIt, pasteStr.begin(), pasteStr.end());
+        }
 		mRedrawText = true;
 	}
 
